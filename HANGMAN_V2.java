@@ -11,7 +11,7 @@ public class HANGMAN_V2 {
 		
 		//Variables
 		String decision, word, topic;
-		int category, wrong, index, turn;
+		int category, wrong = 0, index, turn = 1;
 		char userGuess;
 		
 		//2D array for all the words
@@ -31,11 +31,6 @@ public class HANGMAN_V2 {
 		
 		//Do while to allow user to play multiple times
 		do {
-			
-			//Reset values
-			lettersGuessed.clear();
-			wrong = 0;
-			turn = 1;
 			
 			//2D array for the hangman
 			char [][] hangman =  {  { ' ', ' ', ' ',},
@@ -129,6 +124,16 @@ public class HANGMAN_V2 {
 			
 			//Ask user if they want to play again
 			decision = decision();
+			
+			//Reset values if user wants to play again
+			if(decision.equalsIgnoreCase("Y")) {
+				lettersGuessed.clear();
+				wordLetters.clear();
+				blank.clear();
+				wrong = 0;
+				turn = 1;
+			}
+			
 		}while(decision.equalsIgnoreCase("Y"));
 		
 		//Farewell
